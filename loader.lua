@@ -1,7 +1,7 @@
 -- update 1 added error logging cuz ts not workin chat
 local hub = {}
 
-local gamesSource = game:HttpGet("https://raw.githubusercontent.com/6lvls/hub/main/games.lua")
+local gamesSource = game:HttpGet("https://raw.githubusercontent.com/6lvls/hub/refs/heads/main/games.lua")
 local gamesFunc = loadstring(gamesSource)
 
 if not gamesFunc then
@@ -10,7 +10,7 @@ end
 
 hub.games = gamesFunc()
 
-local uiSource = game:HttpGet("https://raw.githubusercontent.com/6lvls/hub/main/ui.lua")
+local uiSource = game:HttpGet("https://raw.githubusercontent.com/6lvls/hub/refs/heads/main/ui.lua")
 local uiFunc = loadstring(uiSource)
 
 if not uiFunc then
