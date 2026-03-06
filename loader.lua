@@ -1,12 +1,23 @@
+-- update 1 added error logging cuz ts not workin chat
 local hub = {}
 
-hub.games = loadstring(game:HttpGet(
-"https://raw.githubusercontent.com/6lvls/hub/main/games.lua"
-))()
+local gamesSource = game:HttpGet("https://raw.githubusercontent.com/6lvls/hub/main/games.lua")
+local gamesFunc = loadstring(gamesSource)
 
-hub.ui = loadstring(game:HttpGet(
-"https://raw.githubusercontent.com/6lvls/hub/main/ui.lua"
-))()
+if not gamesFunc then
+    error("Failed to load games.lua")
+end
+
+hub.games = gamesFunc()
+
+local uiSource = game:HttpGet("https://raw.githubusercontent.com/6lvls/hub/main/ui.lua")
+local uiFunc = loadstring(uiSource)
+
+if not uiFunc then
+    error("Failed to load ui.lua")
+end
+
+hub.ui = uiFunc()
 
 local placeId = game.PlaceId
 local gameData = hub.games[placeId]
